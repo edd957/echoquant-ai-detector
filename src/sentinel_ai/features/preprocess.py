@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from sklearn.base import ClassifierMixin
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer, StandardScaler
@@ -31,5 +32,5 @@ def build_preprocessor() -> ColumnTransformer:
     )
 
 
-def build_feature_pipeline(model) -> Pipeline:
+def build_feature_pipeline(model: ClassifierMixin) -> Pipeline:
     return Pipeline([("features", build_preprocessor()), ("model", model)])
